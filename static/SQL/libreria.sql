@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `individual` (
 );
 
 CREATE TABLE IF NOT EXISTS `compra` (
-	`id` bigint NOT NULL UNIQUE,
+	`id` bigint AUTO_INCREMENT NOT NULL UNIQUE,
 	`fecha` timestamp NOT NULL,
 	`id_cliente` bigint NOT NULL,
 	`id_vendedor` bigint NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `compra` (
 );
 
 CREATE TABLE IF NOT EXISTS `detalle_compra` (
-	`id` bigint NOT NULL,
+	`id` bigint AUTO_INCREMENT NOT NULL,
 	`id_compra` bigint NOT NULL,
 	`cantidad` bigint NOT NULL,
 	`id_libro` bigint NOT NULL,

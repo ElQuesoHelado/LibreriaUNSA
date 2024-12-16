@@ -206,17 +206,20 @@ BEGIN
         c.id AS compra_id,
         c.fecha AS fecha_compra,
         c.id_cliente,
-        CONCAT(cli.nombres, ' ', cli.apellido1, ' ', cli.apellido2) AS cliente_nombre,
+--         CONCAT(cli.nombres, ' ', cli.apellido1, ' ', cli.apellido2) AS cliente_nombre,
         c.id_vendedor,
-        CONCAT(v.nombres, ' ', v.apellido1, ' ', v.apellido2) AS vendedor_nombre,
+        CONCAT(e.nombres, ' ', e.apellido1, ' ', e.apellido2) AS vendedor_nombre,
         dc.id_libro,
         l.titulo AS libro_titulo,
+        l.path_img,
         dc.cantidad,
         dc.cantidad * l.precio AS total_libro
     FROM
         compra c
     INNER JOIN
         vendedor v ON c.id_vendedor = v.id
+    INNER JOIN
+        empleado e ON v.id = e.id
     INNER JOIN
         cliente cli ON c.id_cliente = cli.id
     INNER JOIN
