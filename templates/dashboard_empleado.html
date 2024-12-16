@@ -46,15 +46,26 @@
             </div>
         </div>
     {% elif session['role'] == 'vendedor' %}
-        <div class="card my-3">
-            <div class="card-header">Compras Asociadas</div>
+        <div class="card mb-4">
             <div class="card-body">
-                <ul>
+                <h5 class="card-title">Compras Asociadas</h5>
+                <div class="row">
                     {% for compra in datos_especificos %}
-                        <li>Compra ID: {{ compra.compra_id }}, Fecha: {{ compra.fecha_compra }},
-                            Cliente: {{ compra.cliente_nombre }}</li>
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <img src="{{ compra.path_img }}" class="card-img-top" alt="{{ compra.libro_titulo }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ compra.libro_titulo }}</h5>
+                                    <p class="card-text"><strong>Compra ID:</strong> {{ compra.compra_id }}</p>
+                                    <p class="card-text"><strong>Cliente ID:</strong> {{ compra.id_cliente }}</p>
+                                    <p class="card-text"><strong>Fecha:</strong> {{ compra.fecha_compra }}</p>
+                                    <p class="card-text"><strong>Cantidad:</strong> {{ compra.cantidad }}</p>
+                                    <p class="card-text"><strong>Total:</strong> ${{ compra.total_libro }}</p>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             </div>
         </div>
     {% endif %}
